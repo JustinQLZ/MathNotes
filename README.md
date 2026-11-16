@@ -8,3 +8,5 @@ The file "GW seminar lecture note.pdf" contains my lecture note on the Gromov-Wi
 The file "semismall.pdf" is my reading report on the paper "Hard Lefschetz Theorem and the topology of semismall maps" by Mark Andrea de Cataldo, Luca Migliorini.
 ### Obsidian Notes
 The file "ObsidianNotes" contains all my math notes managed by the app Obsidian.
+### Paper Manuscript
+The file "Paper-Homological Stability of Spaces of Curves on the Moduli of Stable Rational Curves.pdf" is the manuscript of the paper "Homological Stability of Spaces of Curves on the Moduli of Stable Rational Curves" which I am currently working on.
