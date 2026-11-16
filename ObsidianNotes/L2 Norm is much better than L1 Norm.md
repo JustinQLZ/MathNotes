@@ -1,0 +1,14 @@
+#Real-Analysis #Harmonic-Analysis 
+It is a very useful trick to use Holder's inequity to estimate norms according to other norms. In Harmonic Analysis, the $L^2$ norm is the best over all while the $L^1$ norm is the worst over all. Here're several occasions when using Holder's inequity to converse an $L^1$ norm to $L^2$ norms solve the problem.
+
+#### Plancherel Equity
+For Fourier transformation on $L^1$, we merely have an inequity $||\widehat{f}||_{\infty}\leq||f||_1$. This loses a lot of information. However, we have $||\widehat{f}||_2=||f||_2$. Physically this means that the energy information is preserved under Fourier transformation. When pointwise estimation is not good enough, try use Cauchy-Schwartz to introduce $L^2$ norm.
+e.g. The integral operator $\int_{\mathbb{R}^n}\frac{\widehat{f}(y)}{|y|^n}\,dy$ is $\mathcal{H}_{at}^1\rightarrow\mathbb{C}$ bounded.
+For such problems, we only need to show that there's a uniform bound for atoms. Let $a\in\mathscr{A}$ be an atom, i.e. $\mathrm{supp}\,a\subset Q=Q(c,r)$, $||a||_{\infty}\leq1/|Q|$ and $\int a=0$.
+For low frequencies, use cancellation plus Lagrangian would give $|\widehat{a}(y)|\leq Cr|y|$. So high frequencies boarder should be $|y|>1/r$. Clearly $||\widehat{a}||_{\infty}\leq||a||_1=1$ is not enough. Notice also that simply introducing Gauss kernel wouldn't solve this, since although Gauss kernel make the integral converges, but using the same estimation won't give a uniform bound relative to the $\epsilon$ introduced. Now since pointwise estimation fails, we try to introduce the $L^2$ norm.$$\int_{|y|>1/r}\frac{|\widehat{a}(y)|}{|y|^n}\,dy\leq||\widehat{a}||_2\Bigr(\int_{|y|\\>1/r}\frac{dy}{|y|^{2n}}\Big)^{1/2}=||a||_2C\Big(\int_{1/r}^{+\infty}\frac{t^{n-1}}{t^{2n}}\,dt\Big)^{1/2}\leq Cr^{-n/2}r^{n/2}=C$$Notice how the hopeless (for $L^1$) borderline exponential $|y|^{-n}$ is lifted in this example.
+See also the second example in [[The Weight Function Trick for Estimating Integrals]].
+
+#### Weak (1,1) But Strong (2,2)
+So many operators are merely weak (1,1) but strong (2,2).
+e.g.(Not a very good example though.) $\varphi\in\mathcal{S}$, $M^*_{\varphi}f(x):=\sup_{t>0}\sup_{|y-x|<t}|\varphi_t*f(y)|$. Then $M_{\varphi}^*$ is $\mathcal{H}_{at}^1\rightarrow L^1$ bounded.
+Again it suffices to find a uniform boundary for atoms. For far field use cancellation and Lagrangian to give an estimation$$|\varphi_t*a(y)|\leq\frac{Cr}{|x-c|^{n+1}},\forall|x-c|\geq2\sqrt{n}r,|x-y|<t.$$Now for near field, the direct approach is to show that $||M^*_{\varphi}a||_{\infty}\leq C||a||_{\infty}\leq C/|Q|$. However we could also use the fact that $|M_{\varphi}^*f|\leq CMf$ and estimate as follows:$$||M^*_{\varphi}a||_{L^1(Q^*)}\leq C||1||_{L^2(Q^*)}||Ma||_{L^2(Q^*)}\leq C\sqrt{|Q|}\cdot||a||_{L^2(Q^*)}\leq C$$Notice that **$||1||_2$ is finite for finite regions!**

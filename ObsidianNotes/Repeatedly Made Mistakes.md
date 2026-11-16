@@ -1,0 +1,7 @@
+#### 1. N/mN is NOT the kernel!
+Let $A$ be a noetherian local ring with residue field $k$, $M$ a finitely generated $A$-module.
+False Proof of "$M$ is free": We have an exact sequence$$0\longrightarrow N\longrightarrow A^n\longrightarrow M\longrightarrow 0$$where $A^n\rightarrow M$ is lifted from an isomorphism $k^n\rightarrow M\otimes_Ak$. Apply $-\otimes_A k$ we get$$N\otimes_Ak\longrightarrow k^n\longrightarrow M\otimes_Ak\longrightarrow0$$so $N\otimes_Ak=\mathrm{ker}(k^n\rightarrow M\otimes_Ak)=0$. And by Nakayama's lemma, $N=0$.
+
+We can ONLY get $\mathrm{im}(N\otimes_Ak\rightarrow k^n)=0$! Here's a correct proposition with correct proof:
+**Proposition.** Let $A$ be a noetherian local ring with residue field $k$, $M$ a finitely generated $A$-module. If $M$ is torsion-free, then $M$ is a free $A$-module.
+**Proof.** $$\mathrm{Tor}_1^A(M,k)\longrightarrow N\otimes_Ak\longrightarrow k^n\longrightarrow M\otimes_Ak\longrightarrow0$$And apply $-\otimes_AM$ to $$0\longrightarrow\mathfrak{m}\longrightarrow A\longrightarrow k\longrightarrow0$$we get$$0=\mathrm{Tor}_1^A(A,M)\longrightarrow\mathrm{Tor}_1^A(k,M)\longrightarrow \mathfrak{m}\otimes_AM\longrightarrow A\otimes_AM=M$$So $\mathrm{Tor}_1^A(M,k)=\ker(\mathfrak{m}\otimes_AM\rightarrow M)=0$ and now we indeed have $N\otimes_Ak=\mathrm{ker}(k^n\rightarrow M\otimes_Ak)=0$.$$\tag*{$\square$}$$

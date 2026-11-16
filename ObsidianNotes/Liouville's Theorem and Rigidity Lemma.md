@@ -1,0 +1,46 @@
+#Algebraic-Geometry 
+### Liouville's Theorem
+**Theorem.** Let $X$ be a projective variety over an algebraically closed field $k$, and $Y$ is an affine variety over $k$, then any morphism $f:X\rightarrow Y$ must be constant. In particular, $\Gamma(X,\mathcal{O}_X)=k$.
+**Proof.** We have$$\mathrm{Hom}_{\mathcal{Rings}}(A,\Gamma(X,\mathcal{O}_X))=\mathrm{Hom}_{\mathcal{Sch}}(X,\mathrm{Spec}\,A).$$Then the problem is reduced to the fact that $\Gamma(X,\mathcal{O}_X)=k$, which is a result from the first chapter of Hartshorne.$$\tag*{$\square$}$$**Remark.** This result can be generalized to the case when $X$ is complete (i.e. proper over $k$) and connected.
+Also, the intuition behind this is that all global regular functions of $X$ are constant (the Liouville's theorem), so coordinate functions on $A$ are pulled back to constants on $X$, which means that all points on $X$ are mapped to the same coordinate. The theorem reflects some rigidity of a algebraic map.
+
+### An Exercise
+The following is Hartshorne, Ex.II.9.1 and 9.2.
+**Proposition.** Let $Y$ be a connected, nonsingular, positive-dimensional subvariety of $X=\mathbb{P}_k^n$ over an algebraically closed field $k$. Let $f:X\rightarrow Z$ be a morphism of $k$-varieties such that $f(Y)=P\in Z$, which is a closed pint. Then $f(X)=P$.
+The idea is that, since $Y$ is positive-dimensional, we can show that regular functions on the formal neighborhood (i.e. $\hat{X}$, the completion of $X$ along $Y$) of $Y$ in $X$ are constant. Then we apply the intuition of the Liouville's theorem to show that $\hat{X}\rightarrow Z$ is constant, which in turn implies that $X\rightarrow Z$ is constant.
+##### *Step 1.* $\Gamma(\hat{X},\mathcal{O}_{\hat{X}})=k$.
+Let $\mathcal{I}$ be the ideal sheaf of $Y$. Then by Hartshorne, II.8.13 and 8.17, there's an inclusion of sheaves on $Y$, $\mathcal{I}/\mathcal{I}^2\rightarrow\mathcal{O}_Y(-1)^{n+1}$. Then by Hartshorne, II.8.21A.(e). we can show that $\mathcal{I}^r/\mathcal{I}^{r+1}=\mathrm{Sym}^r\,\mathcal{I}/\mathcal{I}^2$. $\Gamma(Y,\mathcal{O}_Y(-d))=0$ for any $d\geq1$ since $\mathrm{dim}\,Y\geq1$, hence $\Gamma(Y,\mathcal{I}^r/\mathcal{I}^{r+1})=0$ for any $r\geq1$. Now consider the exact sequence$$0\longrightarrow\mathcal{I}^r/\mathcal{I}^{r+1}\longrightarrow\mathcal{O}_X/\mathcal{I}^{r+1}\longrightarrow\mathcal{O}_X/\mathcal{I}^r\longrightarrow0.$$By induction on $r$ we see that $\Gamma(Y,\mathcal{O}_X/\mathcal{I}^r)=k$ for any $r\geq 1$. Consequently, $\Gamma(\hat{X},\mathcal{O}_{\hat{X}})=\varprojlim\Gamma(Y,\mathcal{O}_X/\mathcal{I}^r)=k$.
+**Remark.** Hartshorne gives a remark claiming that the same result holds without the hypothesis $Y$ nonsingular, so the proposition holds without this hypothesis, too.
+##### *Step 2.* $\hat{X}\rightarrow Z$ is constant.
+By the intuition that $\hat{X}$ is contained in any actual neighborhood of $Y$ in $X$, we first reduce to the case $Z$ is affine. Indeed, for any affine neighborhood $U$ of $P$ in $Z$, consider the restriction of $f$ on $U$. Since $f(Y)=P$, we have $Y\subset U$. By definition of completion, we can verify that $\hat{U}=\hat{X}$ easily.
+Now, assume that $Z=\mathrm{Spec}\,A$ is affine. For any coordinate function $x_i\in\Gamma(Z,\mathcal{O}_Z)$, the pullback must be a constant. So all points in $\hat{X}$ are mapped to $P$. Strictly speaking, we need the following lemma in analogous to usual schemes:
+**Lemma.** Let $\mathfrak{X}$ be a noetherian formal scheme, and $\mathfrak{Y}=\mathrm{Spf}\,(A,I)$, we have$$\mathrm{Hom}_{\mathcal{FSch}}(\mathfrak{X},\mathfrak{Y})=\mathrm{Hom}_{\mathcal{TopRings}}(A,\Gamma(\mathfrak{X},\mathcal{O}_{\mathfrak{X}})).$$Here $A$ has $I$-adic topology and $\Gamma(\mathfrak{X},\mathcal{O}_{\mathfrak{X}})$ has topology given by the filtration $\{\Gamma(\mathfrak{X},\mathfrak{J}^n)\}_{n\geq1}$, with $\mathfrak{J}$ an arbitrary ideal of definition for $\mathfrak{X}$. A ring homomorphism $\varphi:A\rightarrow\Gamma(\mathfrak{X},\mathcal{O}_{\mathfrak{X}})$ is continuous if and only if $\forall n\,\exists k\;\;\varphi(I^k)\subset\Gamma(\mathfrak{X},\mathfrak{J}^n)$.
+Apply the lemma to $\hat{X}$ and $Z=\mathrm{Spf}\,(A,(0))$. Since $A$ has the discrete topology, any ring homomorphism is continuous. $\Gamma(\hat{X},\mathcal{O}_{\hat{X}})=k$ then implies that all morphism $\hat{X}\rightarrow Z$ are constant.
+
+##### *Step 3.* $X\rightarrow Z$ is constant.
+For any nonempty open subset $U\subset X$, if we could prove that $f(U)=P$, then since $U$ is dense in $X$, $f(X)\subset\overline{f(U)}=P$. So we need to strengthen the conclusion to an actual open neighborhood of $Y$ in $X$.
+**Lemma.** Let $X$ be a noetherian scheme, $Y\subset X$ a closed subscheme and $U\subset X$ an open subset. Let $\hat{U}$ be the completion of $U$ along $Y\cap U$ and let $\hat{X}$ be the completion of $X$ along $Y$. Then $U\cap \hat{X}=\hat{U}$.
+**Proof.** Clearly the underlying topological spaces are identically $\mathrm{sp}\,Y$. The key input is the fact that inverse limit commutes with sections. Let $V\subset U$ be an open subset, then$$\Gamma(V,\mathcal{O}_{\hat{U}})=\varprojlim\Gamma(V,\mathcal{O}_U/\mathcal{I}|{}_U^m)=\varprojlim\Gamma(V,\mathcal{O}_X/\mathcal{I}^m)=\Gamma(V,\mathcal{O}_{\hat{X}}).$$So we see that their structure sheaf are also identical.$$\tag*{$\square$}$$**Remark.** Since inverse limit and direct limit don't commute, the local rings of $\hat{X}$ are in general *not* complete! See [[The Local Rings of a Completion (TBD)]] for details.
+Let $V=\mathrm{Spec}\,A$ be any affine subset of $Z$ containing $P$. Let $U=\mathrm{Spec}\,B\subset f^{-1}(V)$ be an affine open set such that $U\cap Y\neq\varnothing$, and let $\hat{U}$ be its completion along $Y\cap U$. Then $\hat{U}=U\cap\hat{X}\neq\varnothing$ and hence $\hat{U}\rightarrow U\xrightarrow{f} V$ is constant.
+Converting to rings, we have the following situation: a homomorphism $A\rightarrow B$ of $k$-finitely generated algebras, with $B$ a domain, and a proper ideal $I\subset B$, such that if $\hat{B}$ denotes the $I$-adic completion of $B$, then the composite $A\rightarrow B\rightarrow\hat{B}$ factors through some homomorphism $A\rightarrow k$. We want to conclude that $A\rightarrow B$ also factors through this morphism $A\rightarrow k$. Since $A$ is a noetherian domain and $I$ is a proper ideal, Krull's intersection theorem implies that the kernel $\cap_iI^i$ of $B\rightarrow \hat{B}$ is 0. We have a diagram
+```tikz
+\usepackage{tikz-cd}
+\begin{document}
+\begin{tikzcd}
+
+	&k\arrow[d]\arrow[rd]\\
+	A\arrow[ru]\arrow[r]&B\arrow[r,hook]&\hat{B}
+
+\end{tikzcd}
+\end{document}
+```
+By diagram chasing we see that the commutativity of the right hand side triangle and the large triangle combined with the injectivity of $B\rightarrow\hat{B}$ implies that the commutativity of the left hand side triangle, i.e. $A\rightarrow B$ factors through $A\rightarrow k$ indeed.
+
+### The Rigidity Lemma
+**Lemma.** Let $X, Y$ and $Z$ be algebraic varieties over a field $k$ (i.e. geometrically integral, separated of finite type $k$-scheme). Suppose that $X$ is complete. If $f:X\times Y\rightarrow Z$ is a morphism with the property that, for some $y\in Y(k)$, the fiber $X\times \{y\}$ is mapped to a point $z\in Z(k)$, then $f$ factors through the projection $\mathrm{pr}_Y:X\times Y\rightarrow Y$.
+**Proof.** We may assume that $k=\bar{k}$. Choose a point $x_0\in X(k)$, and define a morphism $g:Y\rightarrow Z$ by $g:Y=\{x_0\}\times Y\subset X\times Y\xrightarrow{f}Z$. Our goal is to show that $f=g\circ \mathrm{pr}_Y$. As $X\times Y$ is reduced, it suffices to prove this on $k$-rational points.
+Let $U\subset Z$ be an affine open neighborhood of $z$. Since $X$ is complete, the projection $\mathrm{pr}_Y:X\times Y\rightarrow Y$ is a closed map, so that $V:=\mathrm{pr}_Y(f^{-1}(Z-U))$ is closed in $Y$. By construction, $P\notin V$ if and only if $f(X\times\{P\})\subset U$. Since $X$ is complete, by Liouville's theorem, $H^0(X,\mathcal{O}_X)=k$ and hence $X=X\times\{P\}\xrightarrow{f} U$ factors through $\mathrm{Spec}\,k$, i.e. $f$ is constant on $X\times \{P\}$. This shows that $f=g\circ\mathrm{pr}_Y$ on the non-empty open set $X\times (Y-V)$. Because $X\times Y$ is irreducible, it follows that $f=g\circ \mathrm{pr}_Y$ everywhere. (*Be cause if two morphisms to a scheme that is separated (over base) are identical on a dense open subset, then they are identical. To prove this, use the definition of being separated and the diagonal.*)$$\tag*{$\square$}$$**Remark.** The tricks here are very useful. First convert the statement to the vanishing of something. Then since $\bar{k}/k$ is faithfully flat, we can extend to and prove for $\bar{k}$. Then being reduced implies that we can prove for $\bar{k}$-points. (Global-local principal.) Also, the last step is worth being remembered as a trick.
+
+Using the lemma, one can prove the following fundamental proposition for abelian varieties:
+**Proposition.** The group structure of a complete group variety is necessarily commutative.
+Compare this with the fact that smooth compact Lie groups are not necessarily compact. The algebraic root of this phenomenon is that holomorphic/regular functions are far less than smooth functions, especially on compact objects. This reveals that holomorphicity/algebraicity brings very strong rigidity to geometry.
